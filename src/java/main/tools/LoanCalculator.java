@@ -10,12 +10,7 @@ public class LoanCalculator {
 	
 	private static final LinkedHashMap<YearMonth, Statement> statementMap = new LinkedHashMap<>();
 	
-	/**
-	 * 
-	 * @author chris
-	 *
-	 */
-	protected static class Statement{
+	public static class Statement{
 		
 		private double credit = 0.0;
 		private double capital = 0.0;
@@ -59,6 +54,7 @@ public class LoanCalculator {
 	 * @param apr Interests
 	 * @param credit Expected credit
 	 * @return
+	 * @throws RuntimeException
 	 */
 	public static ArrayList<YearMonth> projectLoanData(final double principalAmount, final double avgPercentRate, final double creditAmount) {
 		
