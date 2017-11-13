@@ -1,48 +1,46 @@
-package tools;
+package tools.number;
 
 import java.util.ArrayList;
 
-/**
- * @deprecated
- * @see tools.number.Finder
- */
-public class NumberFinder {
+public class Finder {
 		
 	/**
-	 * @deprecated
+	 * 
 	 * @param arr Array of numbers
 	 * @param k Desired number to find in array.
 	 * @return "YES" if number is found in the array. "NO" if not found.
+	 * @throws RuntimeException
 	 */
-	static public String specificNumber(final int arr[], final int k){
+	public static boolean specificNumber(final int arr[], final int k){
 	    
 		try{
 			
 	        for(int i = 0; i < arr.length; i++){
 	        	
 	        	if(arr[i] == k){
-	        		return "YES";
+	        		return true;
 	        	}
 	        	
 	        }
 	        
 	    }catch(RuntimeException e){
 	    	
-	    	return "NO";
+	    	throw e;
 	    	
 	    }
 	    
-	    return "NO";
+	    return false;
 	    
 	}
 	
 	/**
-	 * @deprecated
+	 * 
 	 * @param a The value of which the search should start at.
 	 * @param b The value of which the search should end at.
 	 * @return 
+	 * @throws RuntimeException
 	 */
-    static public int[] oddNumbers(final int a, final int b){
+    public static int[] oddNumbers(final int a, final int b){
     	
     	ArrayList<Integer> stow = new ArrayList<>();
     	    		
@@ -79,8 +77,8 @@ public class NumberFinder {
 	    		}
 	    		
 	    	}catch(RuntimeException e){
-	    		e.printStackTrace();
-	    		return new int[0];
+	    		
+	    		throw e;
 	    		
 	    	}
 	    	
