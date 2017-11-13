@@ -1,4 +1,4 @@
-package tools;
+package tools.loan;
 
 import java.time.YearMonth;
 import java.util.ArrayList;
@@ -6,66 +6,87 @@ import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.TimeZone;
 
-/**
- * @deprecated
- * @see tools.loan.Calculator
- */
-public class LoanCalculator {
+public class Calculator {
+	
+	private final LinkedHashMap<YearMonth, Statement> statementMap = new LinkedHashMap<>();
 	
 	/**
-	 * @deprecated
+	 * Should be used only by Calculator.class.
 	 */
-	private static final LinkedHashMap<YearMonth, Statement> statementMap = new LinkedHashMap<>();
-	
-	/**
-	 * @deprecated
-	 */
-	public static class Statement{
+	protected static class Statement{
 		
 		private double credit = 0.0;
 		private double capital = 0.0;
 		private double principal = 0.0;
 		
-		Statement(final double credit, final double capital, final double principal){
+		protected Statement(final double credit, final double capital, final double principal){
 			this.credit = credit;
 			this.capital = capital;
 			this.principal = principal;
 		}
 		
-		public double getCredit() {
+		protected double getCredit() {
 			return credit;
 		}
 		
-		public double getCapital() {
+		protected double getCapital() {
 			return capital;
 		}
 		
-		public double getPrincipal() {
+		protected double getPrincipal() {
 			return principal;
 		}
 		
 	}
 	
-	/**
-	 * @deprecated
-	 * @param date
-	 * @return
-	 */
-	public static Statement getStatement(YearMonth date){
+	private Statement getStatement(YearMonth date){
 		
 		return statementMap.get(date);
 		
 	}
 	
 	/**
-	 * @deprecated
+	 * 
+	 * @param date Year and Month of statement.
+	 * @return Credit recorded within statement.
+	 */
+	public double getCredit(final YearMonth date) {
+		
+		return getStatement(date).getCredit();
+		
+	}
+	
+	/**
+	 * 
+	 * @param date Year and Month of statement.
+	 * @return Capital recorded within statement.
+	 */
+	public double getCapital(final YearMonth date) {
+		
+		return getStatement(date).getCapital();
+		
+	}
+
+	/**
+	 * 
+	 * @param date Year and Month of statement.
+	 * @return Principal recorded within statement.
+	 */
+	public double getPrincipal(final YearMonth date) {
+		
+		return getStatement(date).getPrincipal();
+		
+	}
+	
+	/**
+	 * 
 	 * @param principal Amount owed.
 	 * @param apr Interests
 	 * @param credit Expected credit
 	 * @return
 	 * @throws RuntimeException
 	 */
-	public static ArrayList<YearMonth> projectLoanData(final double principalAmount, final double avgPercentRate, final double creditAmount) {
+	public ArrayList<YearMonth> projectLoanData(final double principalAmount, final double avgPercentRate, final double creditAmount) {
 		
 		final Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
 		
