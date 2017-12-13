@@ -1,12 +1,19 @@
-package tools.loan;
+package com.conceptual.tools.loan;
 import java.time.YearMonth;
 
-import tools.loan.Calculator;
+import com.conceptual.tools.loan.Calculator;
 
 import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * Class used calculate Loan payoff.
+ * 
+ * @since 11/30/2017
+ * @author Christopher Jepson
+ * @see com.conceptual.tools.loan.Calculator
+ */
 public class CalculatorTest {
 
 	// Test projectLoanData(double, double, double)

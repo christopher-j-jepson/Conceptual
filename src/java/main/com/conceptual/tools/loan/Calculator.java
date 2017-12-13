@@ -1,4 +1,4 @@
-package tools.loan;
+package com.conceptual.tools.loan;
 
 import java.time.YearMonth;
 import java.util.ArrayList;
@@ -9,9 +9,13 @@ import java.util.TimeZone;
 public class Calculator {
 	
 	private final LinkedHashMap<YearMonth, Statement> statementMap = new LinkedHashMap<>();
-	
+
 	/**
-	 * Should be used only by Calculator.class.
+	 * Class used calculate Loan payoff.
+	 * 
+	 * @since 11/30/2017
+	 * @author Christopher Jepson
+	 * @see com.conceptual.tools.loan.CalculatorTest
 	 */
 	protected static class Statement{
 		

@@ -1,4 +1,4 @@
-package games;
+package com.conceptual.games;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -11,7 +11,7 @@ import org.junit.Test;
  * 
  * @since 11/30/2017
  * @author Christopher Jepson
- * @see games.Bowling
+ * @see com.conceptual.games.Bowling
  */
 public class BowlingTest {
 

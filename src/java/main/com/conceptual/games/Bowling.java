@@ -1,4 +1,4 @@
-package games;
+package com.conceptual.games;
 
 import java.util.Random;
 
@@ -7,7 +7,7 @@ import java.util.Random;
  * 
  * @since 11/30/2017
  * @author Christopher Jepson
- * @see games.BowlingTest
+ * @see com.conceptual.games.BowlingTest
  */
 public class Bowling {
 

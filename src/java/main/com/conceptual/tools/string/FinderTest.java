@@ -1,11 +1,16 @@
-package tools.string;
+package com.conceptual.tools.string;
 
-import static tools.string.Finder.getDuplicateChar;
+import static com.conceptual.tools.string.Finder.getDuplicateChar;
 
 import java.util.Map;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * @since 11/30/2017
+ * @author Christopher Jepson
+ * @see com.conceptual.tools.string.Finder
+ */
 public class FinderTest {
 
 	@Test

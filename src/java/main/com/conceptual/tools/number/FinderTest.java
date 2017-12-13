@@ -1,13 +1,18 @@
-package tools.number;
+package com.conceptual.tools.number;
 
-import static tools.number.Finder.oddNumbers;
-import static tools.number.Finder.specificNumber;
+import static com.conceptual.tools.number.Finder.oddNumbers;
+import static com.conceptual.tools.number.Finder.specificNumber;
 
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * @since 11/30/2017
+ * @author Christopher Jepson
+ * @see com.conceptual.tools.number.Finder
+ */
 public class FinderTest {
 	
 	// Test specificNumber(int, int)

@@ -1,10 +1,15 @@
-package tools.string;
+package com.conceptual.tools.string;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * @since 11/30/2017
+ * @author Christopher Jepson
+ * @see com.conceptual.tools.string.FinderTest
+ */
 public class Finder {
 
 	/**
