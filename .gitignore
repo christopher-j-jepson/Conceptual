@@ -35,3 +35,11 @@ Makefile.in
 # Eclipse
 
 /.project
+
+# Eclipse Che
+
+/.codenvy.json
+
+# Gradle
+
+/.gradle
