@@ -44,3 +44,8 @@ Makefile.in
 # Gradle
 
 /.gradle
+/build
+
+# Maven
+
+/pom.xml
