@@ -39,6 +39,7 @@ Makefile.in
 # Eclipse Che
 
 /.codenvy.json
+/.che
 
 # Gradle
 
