@@ -8,12 +8,15 @@ description = """Main-App"""
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+
+
 configurations {
-    // configuration that holds jars to include in the jar
     extraLibs
+    jaxDoclet
 }
 
 dependencies {
+    jaxDoclet 'com.conceptual:Conceptual:1.0-SNAPESHOT'
     compile 'org.springframework:spring-context:5.0.2.RELEASE'
     extraLibs group: 'org.springframework', name: 'spring-beans', version: '5.0.2.RELEASE'
     extraLibs group: 'org.springframework', name: 'spring-context', version: '5.0.2.RELEASE'
@@ -45,6 +48,18 @@ task createPom {
         pom {
         }.writeTo("pom.xml")
     }
+}
+
+task myJavadocs(type: Javadoc) {
+  source = sourceSets.main.allJava
+}
+
+task generateRestApiDocs(type: Javadoc) {
+  source = sourceSets.main.allJava
+  destinationDir = reporting.file("rest-api-docs")
+  options.docletpath = configurations.jaxDoclet.files.asType(List)
+  options.doclet = "com.lunatech.doclets.jax.jaxrs.JAXRSDoclet"
+  options.addStringOption("jaxrscontext", "http://localhost:8080/Conceptual")
 }
 
 compileJava.dependsOn createPom
