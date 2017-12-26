@@ -15,7 +15,6 @@ public class Calculator {
 	 * 
 	 * @since 11/30/2017
 	 * @author Christopher Jepson
-	 * @see com.conceptual.tools.loan.CalculatorTest
 	 */
 	protected static class Statement{
 		
@@ -84,10 +83,10 @@ public class Calculator {
 	
 	/**
 	 * 
-	 * @param principal Amount owed.
-	 * @param apr Interests
-	 * @param credit Expected credit
-	 * @return
+	 * @param principalAmount Amount owed.
+	 * @param avgPercentRate Interests
+	 * @param creditAmount Expected credit
+	 * @return List of prjections by YearMonth
 	 * @throws RuntimeException
 	 */
 	public ArrayList<YearMonth> projectLoanData(final double principalAmount, final double avgPercentRate, final double creditAmount) {

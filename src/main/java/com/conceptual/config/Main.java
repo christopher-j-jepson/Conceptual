@@ -1,4 +1,4 @@
-package com.conceptual;
+package com.conceptual.config;
 
 import java.time.YearMonth;
 import java.util.List;
@@ -21,5 +21,7 @@ public class Main {
         Calculator calculator = ctx.getBean(Calculator.class);
         List<YearMonth> projection = calculator.projectLoanData(10_000.00, 0.12, 300.00);
         System.out.println( calculator.getPrincipal( projection.get(0) ) );
+        
+        ctx.close();
     }
 }

@@ -11,7 +11,6 @@ import java.util.Map;
 /**
  * @since 11/30/2017
  * @author Christopher Jepson
- * @see com.conceptual.tools.number.FinderTest
  */
 public class Finder {
 		

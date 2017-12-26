@@ -8,7 +8,6 @@ import java.util.Set;
 /**
  * @since 11/30/2017
  * @author Christopher Jepson
- * @see com.conceptual.tools.string.FinderTest
  */
 public class Finder {
 
@@ -17,7 +16,7 @@ public class Finder {
 	 * @return All duplicate characters found and their number of recurrences.
 	 */
 	public static Map<Character,Integer> getDuplicateChar(final String str){
-
+                
 		try{
 			
 			if( str == null ){
@@ -34,7 +33,7 @@ public class Finder {
 			
 			// Check for duplicate characters in character array.
 			for(int i = 0; i < ch.length; i++){
-				
+			    
 				// Check if a duplicate already exist.
 				if(!chSet.add( ch[i]) ){
 					

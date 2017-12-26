@@ -7,7 +7,7 @@ import com.conceptual.games.Bowling;
 
 /**
  * Class used for Spring Application DI Configuration.
- * <br/> NOTE: Spring scope default is 'prototype'
+ *  NOTE: Spring scope default is 'prototype'
  * 
  * @since 12/19/2017
  * @author Christopher Jepson

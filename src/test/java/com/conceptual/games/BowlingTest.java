@@ -11,7 +11,6 @@ import org.junit.Test;
  * 
  * @since 11/30/2017
  * @author Christopher Jepson
- * @see com.conceptual.games.Bowling
  */
 public class BowlingTest {
 
