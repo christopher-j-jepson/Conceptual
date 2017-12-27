@@ -4,6 +4,7 @@ import static com.conceptual.tools.string.Finder.getDuplicateChar;
 import static com.conceptual.tools.string.Finder.sort;
 import static com.conceptual.tools.string.Finder.reverse;
 import static com.conceptual.tools.string.Finder.naturalOrderSort;
+import static com.conceptual.tools.string.Finder.isPalindrome;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,36 @@ import org.junit.Test;
  * @author Christopher Jepson
  */
 public class FinderTest {
+
+    @Test
+    public void testIsPalindrome(){
+        
+        final String str[] = {"BOB", "Pop", "dad", "Tom", "SAM", "ram"};
+        boolean test[] = new boolean[str.length];
+        
+        test[0] = isPalindrome(str[0]);
+        test[1] = isPalindrome(str[1]);
+        test[2] = isPalindrome(str[2]);
+        test[3] = isPalindrome(str[3]);
+        test[4] = isPalindrome(str[4]);
+        test[5] = isPalindrome(str[5]);
+        
+        Assert.assertTrue(test[0]==true);
+        Assert.assertTrue(test[1]==true);
+        Assert.assertTrue(test[2]==true);
+        Assert.assertTrue(test[3]==false);
+        Assert.assertTrue(test[4]==false);
+        Assert.assertTrue(test[5]==false);
+        
+    }
+    
+    @Test(expected = IllegalStateException.class)
+    public void testIsPalindromeNullPassed(){
+        
+        isPalindrome(null);
+        Assert.fail(); // Should not reach this point.
+        
+    }
 
     @Test
     public void testSort(){

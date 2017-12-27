@@ -1,5 +1,6 @@
 package com.conceptual.tools.string;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -13,7 +14,28 @@ import java.util.Set;
  * @author Christopher Jepson
  */
 public class Finder {
+    
+    /**
+     * @param str Value to check.
+     * @return true if String is a palindrome.
+     * @throws IllegalStateException
+     */
+    public static boolean isPalindrome(final String str){
+        
+        if(str==null){
+            
+            throw new IllegalStateException("Null disallowed!");
+            
+        }
+        
+        final String str1 = str.toUpperCase();
+        final StringBuilder builder = new StringBuilder(str);
+        final String str2 = builder.reverse().toString().toUpperCase();
+        
+        return str1.equals(str2);
 
+    }
+    
     /**
      * @param list List of String values
      * @return Alphanumeric sorted list.
