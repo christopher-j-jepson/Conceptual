@@ -1,8 +1,14 @@
 package com.conceptual.tools.string;
 
 import static com.conceptual.tools.string.Finder.getDuplicateChar;
+import static com.conceptual.tools.string.Finder.sort;
+import static com.conceptual.tools.string.Finder.reverse;
+import static com.conceptual.tools.string.Finder.naturalOrderSort;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,6 +17,140 @@ import org.junit.Test;
  * @author Christopher Jepson
  */
 public class FinderTest {
+
+    @Test
+    public void testSort(){
+        
+        List<String> list = new ArrayList<>();
+        
+        list.add("1");
+        list.add("D");
+        list.add("APPLE");
+        list.add("a");
+        list.add("E");
+        list.add("APPLICATION");
+        list.add("b");
+        list.add("c");
+        list.add("APPLY");
+        list.add("2");       
+        list.add("F");
+        list.add("3");
+        
+        list = sort(list);
+        
+        Assert.assertTrue( list.get( 0).equals("1") );
+        Assert.assertTrue( list.get( 1).equals("2") );
+        Assert.assertTrue( list.get( 2).equals("3") );        
+        Assert.assertTrue( list.get( 3).equals("a") );
+        Assert.assertTrue( list.get( 4).equals("APPLE") );
+        Assert.assertTrue( list.get( 5).equals("APPLICATION") );
+        Assert.assertTrue( list.get( 6).equals("APPLY") );
+        Assert.assertTrue( list.get( 7).equals("b") );
+        Assert.assertTrue( list.get( 8).equals("c") );
+        Assert.assertTrue( list.get( 9).equals("D") );
+        Assert.assertTrue( list.get(10).equals("E") );
+        Assert.assertTrue( list.get(11).equals("F") );
+
+        
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testSortNullPassed(){
+        
+        List<String> list = null;     
+        list = sort(list);
+        Assert.fail(); // Should not reach this point.
+        
+    }
+    
+    @Test
+    public void testReverse(){
+        
+        List<String> list = new ArrayList<>();
+        
+        list.add("1");
+        list.add("D");
+        list.add("APPLE");
+        list.add("a");
+        list.add("E");
+        list.add("APPLICATION");
+        list.add("b");
+        list.add("c");
+        list.add("APPLY");
+        list.add("2");       
+        list.add("F");
+        list.add("3");
+        
+        list = reverse(list);
+                
+        Assert.assertTrue( list.get( 0).equals("3") );
+        Assert.assertTrue( list.get( 1).equals("F") );
+        Assert.assertTrue( list.get( 2).equals("2") );
+        Assert.assertTrue( list.get( 3).equals("APPLY") );
+        Assert.assertTrue( list.get( 4).equals("c") );
+        Assert.assertTrue( list.get( 5).equals("b") );
+        Assert.assertTrue( list.get( 6).equals("APPLICATION") );
+        Assert.assertTrue( list.get( 7).equals("E") );
+        Assert.assertTrue( list.get( 8).equals("a") );
+        Assert.assertTrue( list.get( 9).equals("APPLE") );
+        Assert.assertTrue( list.get(10).equals("D") );
+        Assert.assertTrue( list.get(11).equals("1") );
+        
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testReverseNullPassed(){
+        
+        List<String> list = null;     
+        list = reverse(list);
+        Assert.fail(); // Should not reach this point.
+        
+    }
+    
+    @Test
+    public void testNaturalOrderSort(){
+           
+        List<String> list = new ArrayList<>();
+        
+        list.add("1");
+        list.add("D");
+        list.add("APPLE");
+        list.add("a");
+        list.add("E");
+        list.add("APPLICATION");
+        list.add("b");
+        list.add("c");
+        list.add("APPLY");
+        list.add("2");       
+        list.add("F");
+        list.add("3");
+        
+        list = naturalOrderSort(list);
+        
+        
+        Assert.assertTrue( list.get( 0).equals("1") );
+        Assert.assertTrue( list.get( 1).equals("2") );
+        Assert.assertTrue( list.get( 2).equals("3") );  
+        Assert.assertTrue( list.get( 3).equals("APPLE") );
+        Assert.assertTrue( list.get( 4).equals("APPLICATION") );
+        Assert.assertTrue( list.get( 5).equals("APPLY") );
+        Assert.assertTrue( list.get( 6).equals("D") );
+        Assert.assertTrue( list.get( 7).equals("E") );
+        Assert.assertTrue( list.get( 8).equals("F") );
+        Assert.assertTrue( list.get( 9).equals("a") );
+        Assert.assertTrue( list.get(10).equals("b") );
+        Assert.assertTrue( list.get(11).equals("c") );
+        
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testNaturalOrderSortNullPassed(){
+        
+        List<String> list = null;     
+        list = naturalOrderSort(list);
+        Assert.fail(); // Should not reach this point.
+        
+    }
 
 	@Test
 	public void testGetDuplicateCharOneDuplicate(){

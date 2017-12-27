@@ -1,7 +1,10 @@
 package com.conceptual.tools.string;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -11,6 +14,64 @@ import java.util.Set;
  */
 public class Finder {
 
+    /**
+     * @param list List of String values
+     * @return Alphanumeric sorted list.
+     * @throws IllegalStateException
+     */
+    public static List<String> sort(final List<String> list){
+        
+        if(list==null){
+            
+            throw new IllegalStateException("Null disallowed!");
+            
+        }
+        
+        list.sort(String.CASE_INSENSITIVE_ORDER);
+        
+        return list;
+        
+    }
+    
+    /**
+     * @param list List of String values.
+     * @return Reverses existing String indexes.
+     * @throws IllegalStateException
+     */
+    public static List<String> reverse(final List<String> list){
+        
+        if(list==null){
+            
+            throw new IllegalStateException("Null disallowed!");
+            
+        }
+        
+        List<String> shallowCopy = list.subList( 0, list.size() );
+        Collections.reverse(shallowCopy);
+        
+        return shallowCopy;
+        
+    }
+    
+    /**
+     * @param list List of String values.
+     * @return Alphanumeric sorted list in natural order.
+     * @throws IllegalStateException
+     */
+    public static List<String> naturalOrderSort(final List<String> list){
+        
+        if(list==null){
+            
+            throw new IllegalStateException("Null disallowed!");
+            
+        }
+        
+        list.sort( Comparator.naturalOrder() );
+        
+        return list;
+        
+    }
+    
 	/**
 	 * @param str Value to check duplicate characters.
 	 * @return All duplicate characters found and their number of recurrences.
