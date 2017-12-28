@@ -27,3 +27,5 @@
       Eclipse Che: https://www.eclipse.org/che/
       Gradle: https://gradle.org/
       Spring Framework: https://projects.spring.io/spring-framework/
+      Apache Commons: https://commons.apache.org/proper/commons-lang/
+      Apache POI: https://poi.apache.org/
