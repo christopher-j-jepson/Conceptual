@@ -24,6 +24,10 @@
 
    ## Application Built On:
    
+      Agile/SCRUM via ZenHub: https://www.zenhub.com/
+      Oracle Java 8: http://www.oracle.com/technetwork/java/index.html
       Eclipse Che: https://www.eclipse.org/che/
       Gradle: https://gradle.org/
       Spring Framework: https://projects.spring.io/spring-framework/
+      Apache Commons: https://commons.apache.org/proper/commons-lang/
+      Apache POI: https://poi.apache.org/
