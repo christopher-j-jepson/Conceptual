@@ -11,12 +11,12 @@ import org.apache.commons.io.FilenameUtils;
 public abstract class AbstractDataFile {
        
     // Known 'universal' metadata elements.
-    private final String filePath;
-    private final String fileName;
-    private final String fileType; // Replace with ENUM
+    protected final String filePath;
+    protected final String fileName;
+    protected final String fileType; // Replace with ENUM
     private long fileSize;
     private Date fileDate;
-    private File file;
+    protected File file;
     protected FileInputStream fileInputStream;
     protected FileOutputStream fileOutputStream;
         
@@ -48,7 +48,7 @@ public abstract class AbstractDataFile {
     
     public abstract void add();
     
-    protected boolean openInputStream(){
+    protected boolean openInputStream() {
         
         try{
             
@@ -58,7 +58,6 @@ public abstract class AbstractDataFile {
                 fileInputStream = new FileInputStream( file ); 
                 
             }
-            
             
         } catch(FileNotFoundException e){
             
@@ -96,7 +95,7 @@ public abstract class AbstractDataFile {
         
         try{
             
-            File file = new File( filePath + fileName + fileType );
+            file = new File( filePath + fileName + fileType );
             fileInputStream = new FileInputStream( file ); 
             
             fileSize = file.length();

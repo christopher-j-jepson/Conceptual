@@ -1,17 +1,23 @@
 package com.conceptual.tools.file.excel;
 
+import java.io.FileInputStream;
+
 import com.conceptual.tools.file.DataFile;
 import com.conceptual.tools.file.AbstractDataFile;
+
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.commons.collections4.IteratorUtils;
+
 import java.io.IOException;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.LinkedHashMap;
+
 import com.conceptual.tools.file.T;
 import com.conceptual.tools.file.V;
 
@@ -22,11 +28,6 @@ import com.conceptual.tools.file.V;
 public class ExcelDataFile extends AbstractDataFile implements DataFile {
     
     private byte sheetCount;
-    
-    /**
-     * The index of field 'sheetNames' is the sheet's number.
-     */
-    private List<String> sheetNames = new ArrayList<>();
     private Map<String,List<ExcelRow>> sheetMap = new LinkedHashMap<>();
     
     public ExcelDataFile( final String absolutePath ){
@@ -49,7 +50,7 @@ public class ExcelDataFile extends AbstractDataFile implements DataFile {
     
     public T get(final Class classs, final V value){
         
-        if( classs.equals(Sheet.class) && sheetNames.contains( String.valueOf(value) ) ){
+        if( classs.equals(Sheet.class) && sheetMap.keySet().contains( String.valueOf(value) ) ){
             
             return (T) getSheet( String.valueOf(value) );
             
@@ -71,14 +72,14 @@ public class ExcelDataFile extends AbstractDataFile implements DataFile {
         
         try{
             
-            super.openInputStream();
+            fileInputStream = new FileInputStream( file ); 
             
             Workbook workbook = new XSSFWorkbook(fileInputStream);
             sheet = workbook.getSheet(name);
         
             workbook.close();  
             
-            super.closeInputStream();
+            fileInputStream.close();
          
         } catch(IOException e){
             
@@ -90,25 +91,55 @@ public class ExcelDataFile extends AbstractDataFile implements DataFile {
         
     }
     
-    public void readExcelPoiFile(){
+    public void readFile(){
+        
+        this.readExcelDataFile();
+        
+    }
+    
+    private void readExcelDataFile(){
         
         try{
             
-            super.openInputStream();
+            List<ExcelRow> rowList = new ArrayList<>();
+             
+            super.readFile();
             
+            fileInputStream = new FileInputStream( file ); 
+             
             Workbook workbook = new XSSFWorkbook(fileInputStream);
             List<Sheet> sheetList = IteratorUtils.toList( workbook.sheetIterator() );
             sheetCount = (byte) workbook.getNumberOfSheets();
             
             for( Sheet sheet : sheetList ){
                 
-                sheetNames.add( sheet.getSheetName() );
+                ExcelRow row = new ExcelRow();
+                int rowSize = sheet.getLastRowNum();
+                int columnSize = sheet.getRow(0).getPhysicalNumberOfCells();
+                
+                // Bubble Sort
+                for(int x = 0; x < rowSize; x++){
+                    
+                    List<ExcelCell> cellList = new ArrayList<>();
+                    
+                    for(int y = 0; y < columnSize; y++){
+                        
+                        cellList.add( new ExcelCell( Object.class, sheet.getRow(x).getCell(y).toString() ) );
+                        
+                    }
+                    
+                    row.setExcelCellList(cellList);
+                    rowList.add(row);
+                                        
+                }
+                
+                sheetMap.put(sheet.getSheetName(), rowList);
                 
             }
         
             workbook.close();  
             
-            super.closeInputStream();
+            fileInputStream.close();
          
         } catch(IOException e){
             
@@ -117,8 +148,7 @@ public class ExcelDataFile extends AbstractDataFile implements DataFile {
         }
 
     }
-    
-        
+      
     public byte getSheetCount(){
         
         return sheetCount;
@@ -126,8 +156,8 @@ public class ExcelDataFile extends AbstractDataFile implements DataFile {
     }
     
     public List<String> getSheetNames(){
-        
-        return sheetNames;
+                
+        return  Arrays.asList( sheetMap.keySet().toArray( new String[ sheetMap.size() ] ) );
         
     } 
         

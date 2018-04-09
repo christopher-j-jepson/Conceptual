@@ -8,27 +8,27 @@ import java.util.List;
  */
 public class ExcelRow {
     
-    private List<ExcelColumn> excelColumnList;
+    private List<ExcelCell> excelCellList;
     
     public ExcelRow(){
         
     }
     
-    public ExcelRow(final List<ExcelColumn> excelColumnList){
+    public ExcelRow(final List<ExcelCell> excelCellList){
         
-        this.excelColumnList = excelColumnList;
-        
-    }
-    
-    public List<ExcelColumn> getExcelColumnList(){
-        
-        return excelColumnList;
+        this.excelCellList = excelCellList;
         
     }
     
-    public void setExcelColumnList(final List<ExcelColumn> excelColumnList){
+    public List<ExcelCell> getExcelColumnList(){
         
-        this.excelColumnList = excelColumnList;
+        return excelCellList;
+        
+    }
+    
+    public void setExcelCellList(final List<ExcelCell> excelCellList){
+        
+        this.excelCellList = excelCellList;
         
     }
     
